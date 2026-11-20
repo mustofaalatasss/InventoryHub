@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InventoryHub - Full-Stack Inventory Management</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo-icon">📦</div>
+        <div>
+          <h1>InventoryHub</h1>
+          <p class="subtitle">Full-Stack Integration Platform</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <span class="badge api-status" id="apiStatusBadge">● API Connected</span>
+      </div>
+    </header>
+
+    <!-- Notification Toast -->
+    <div id="toastNotification" class="toast hidden"></div>
+
+    <main class="main-content">
+      <!-- Action Toolbar -->
+      <section class="toolbar card">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search item or category (debounced)..." />
+          <span class="search-indicator" id="searchIndicator">🔍</span>
+        </div>
+
+        <div class="filter-box">
+          <select id="categoryFilter">
+            <option value="All">All Categories</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Audio">Audio</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" id="openAddModalBtn">+ Add New Item</button>
+      </section>
+
+      <!-- Inventory Table Section -->
+      <section class="table-section card">
+        <div class="section-header">
+          <h2>Inventory Catalog</h2>
+          <span class="item-count" id="totalCountDisplay">Showing 0 items</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="inventory-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Item Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inventoryTableBody">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty & Loading States -->
+        <div id="loadingIndicator" class="state-message hidden">
+          <div class="spinner"></div>
+          <p>Loading inventory data...</p>
+        </div>
+        <div id="emptyState" class="state-message hidden">
+          <p>No inventory items match your search.</p>
+        </div>
+
+        <!-- Pagination Controls (Activity 4 Optimization) -->
+        <div class="pagination-container" id="paginationControls">
+          <button class="btn btn-outline" id="prevPageBtn" disabled>&laquo; Previous</button>
+          <span class="page-indicator" id="pageIndicator">Page 1 of 1</span>
+          <button class="btn btn-outline" id="nextPageBtn" disabled>Next &raquo;</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Add / Edit Modal -->
+    <div id="itemModal" class="modal-overlay hidden">
+      <div class="modal card">
+        <div class="modal-header">
+          <h3 id="modalTitle">Add New Inventory Item</h3>
+          <button class="modal-close" id="closeModalBtn">&times;</button>
+        </div>
+        <form id="itemForm">
+          <input type="hidden" id="itemId">
+          <div class="form-group">
+            <label for="itemName">Item Name</label>
+            <input type="text" id="itemName" required placeholder="e.g. Wireless Mouse">
+          </div>
+          <div class="form-group">
+            <label for="itemCategory">Category</label>
+            <select id="itemCategory" required>
+              <option value="Electronics">Electronics</option>
+              <option value="Furniture">Furniture</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Audio">Audio</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group half">
+              <label for="itemQuantity">Quantity</label>
+              <input type="number" id="itemQuantity" min="0" required placeholder="0">
+            </div>
+            <div class="form-group half">
+              <label for="itemPrice">Price ($)</label>
+              <input type="number" id="itemPrice" min="0.01" step="0.01" required placeholder="0.00">
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-outline" id="cancelModalBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="saveItemBtn">Save Item</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "inventory-hub",
+  "version": "1.0.0",
+  "description": "Full-Stack InventoryHub Application with Optimized API Integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "inventory",
+    "full-stack",
+    "express",
+    "copilot",
+    "api-integration"
+  ],
+  "author": "Mustofa",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
