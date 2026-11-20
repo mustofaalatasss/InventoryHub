@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InventoryHub - Full-Stack Inventory Management</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>InventoryHub - C# ASP.NET Core Integration</title>
+  <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,11 +14,11 @@
         <div class="logo-icon">📦</div>
         <div>
           <h1>InventoryHub</h1>
-          <p class="subtitle">Full-Stack Integration Platform</p>
+          <p class="subtitle">Full-Stack C# ASP.NET Core &amp; JavaScript Integration</p>
         </div>
       </div>
       <div class="header-badges">
-        <span class="badge api-status" id="apiStatusBadge">● API Connected</span>
+        <span class="badge api-status" id="apiStatusBadge">● ASP.NET Core API Connected</span>
       </div>
     </header>
 
@@ -29,7 +29,7 @@
       <!-- Action Toolbar -->
       <section class="toolbar card">
         <div class="search-box">
-          <input type="text" id="searchInput" placeholder="Search item or category (debounced)..." />
+          <input type="text" id="searchInput" placeholder="Search item or category (debounced 300ms)..." />
           <span class="search-indicator" id="searchIndicator">🔍</span>
         </div>
 
@@ -75,7 +75,7 @@
         <!-- Empty & Loading States -->
         <div id="loadingIndicator" class="state-message hidden">
           <div class="spinner"></div>
-          <p>Loading inventory data...</p>
+          <p>Loading inventory data from ASP.NET Core API...</p>
         </div>
         <div id="emptyState" class="state-message hidden">
           <p>No inventory items match your search.</p>
@@ -131,6 +131,6 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
